@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hover实现文字底部边框横向伸长缩短效果</title>
+  <style>
+    .text{
+      width: 98px;
+    }
+    .text::after{
+      content: '';
+      width: 100%;
+      height: 2px;
+      display: block;
+      background-color:red;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s cubic-bezier(.645,.045,.335,1);
+    }
+    .text::after{
+      transform: scaleX(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>hover 实现文字底部边框 横向 伸长缩短</h1>
+    <span>思路: 变形	过度	伪类	伪元素	贝塞尔曲线</span>
+    <div class="text">这是一段文字</div>
+  </div>
+</body>
+</html>
