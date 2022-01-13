@@ -1,7 +1,7 @@
 function debounce(fnc, delay=500) {
   let timer = null
   return function(...arg) {
-    timer = clearTimeout(timer)
+    timer && clearTimeout(timer)
     timer = setTimeout(() => {
       fnc.apply(this, arguments)
     }, delay)
