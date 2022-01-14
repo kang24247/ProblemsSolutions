@@ -14,7 +14,8 @@ const input = document.querySelector('input')
 input.oninput = debounce(function() {
   console.log(this.value)
 })
-// vue3 中使用防抖函数
+
+// ----------------------------vue3 中使用防抖函数----------------------------
 <template>
   <input style="margin:40px;" type="text" v-model="inputValue" @input="handlerInput" />
 </template>
