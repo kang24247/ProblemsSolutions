@@ -14,3 +14,33 @@ const input = document.querySelector('input')
 input.oninput = debounce(function() {
   console.log(this.value)
 })
+// vue3 中使用防抖函数
+<template>
+  <input style="margin:40px;" type="text" v-model="inputValue" @input="handlerInput" />
+</template>
+
+<script setup>
+import { ref } from 'vue'
+let inputValue = ref('')
+class Debounce {
+  constructor(delay) {
+    this.delay = delay ? delay : 500
+    this.timeOut = null
+  }
+  debounceEnd() {
+    return new Promise((resolve, reject) => {
+      if (this.timeout) {
+        clearTimeout(this.timeout)
+      }
+      this.timeout = setTimeout(() => {
+        resolve(inputValue.value)
+      }, this.delay)
+    })
+  }
+}
+const de = new Debounce(1000)
+async function handlerInput() {
+  const info =  await de.debounceEnd()
+  console.log(info);
+}
+</script>
