@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+</head>
+<style>
+  body{
+    text-align: center;
+  }
+  /* -================================================================== */
+  #circle-water{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border-radius: 41%;
+    background: radial-gradient(#FFF574,#9e4900);
+    animation: rotate_water 10s linear infinite;
+  }
+  @keyframes rotate_water {
+    to{
+      transform: rotate(1turn);
+    }
+  }
+  /* -================================================================== */
+  .horse-race-lamp{
+    width: 200px;
+    height: 200px;
+    border: black double 6px;
+    border-radius: 4px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-content: center;
+    position: relative;
+  }
+  .horse-race-lamp>.mask-area{
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .horse-race-lamp>.light-area{
+    width: 0;
+    height: 0;
+    border: 100px solid;
+    border-color: #9e4900 #FFF574 #534ffe #34fd33;
+    margin: auto;
+  }
+  /* -================================================================== */
+  .light-wrapper{
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+  .conic {
+    position: relative;
+    margin: auto;
+    z-index: 0;
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2rem;
+  }
+  .conic::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #1a232a;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: conic-gradient(transparent, rgba(168, 239, 255, 1), transparent 30%);
+    animation: rotate 4s linear infinite;
+  }
+  .conic::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: #000;
+    border-radius: 5px;
+  }
+  .conic-demo::after {
+    animation: opacityChange 5s infinite linear;
+  }
+  @keyframes opacityChange {
+    50% {
+      opacity:.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .rainbow {
+    position: relative;
+    z-index: 0;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2rem;
+  }
+  .rainbow::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+    animation: rotate 4s linear infinite;
+  }
+  .rainbow::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    background: black;
+    border-radius: 5px;
+    animation: opacityChange 3s infinite alternate;
+  }
+  /* -================================================================== */
+  .cursor-pointer-area{
+    width: 100%;
+    height: 140px;
+    background-color: #fff;
+  }
+  .pic {
+      width: 100px;
+      height: 100px;
+      margin: 50px auto;
+      cursor: pointer;
+      transition: .5s all ease-out;
+  }
+  .pic1 {
+      background-image: url('https://user-images.githubusercontent.com/8554143/34350345-4812d23a-ea51-11e7-98eb-461188ce9125.png'), linear-gradient(#f09, #09f, #f0f);
+      background-blend-mode: lighten;
+      background-size: cover;
+      background-position: 0 0, 0 120px;
+      background-repeat: no-repeat;
+  }
+  .pic1:hover {
+      background-position: 0 0, 0 0;
+  }
+  /* -================================================================== */
+  .g-container {
+    margin: 20px auto;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    filter: blur(4px) contrast(8);
+    background: #000;
+  }
+  .g-ball,.g-first{
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 50%;
+      left: 50%;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-700%, 0);
+      opacity: 0;
+      animation: move 3s infinite linear;
+  }
+  .g-ball:nth-child(1) {
+    animation: move 3.5s infinite 0.1s linear;
+  }
+  .g-ball:nth-child(2) {
+    animation: move 3.5s infinite 0.3s linear;
+  }
+  .g-ball:nth-child(3) {
+    animation: move 3.5s infinite 0.5s linear;
+  }
+  .g-ball:nth-child(4) {
+    animation: move 3.5s infinite 0.7s linear;
+  }
+  .g-ball:nth-child(5) {
+    animation: move 3.5s infinite 0.9s linear;
+  }
+  .g-ball:nth-child(6) {
+    animation: move 3.5s infinite 1.1s linear;
+  }
+  .g-ball:nth-child(7) {
+    animation: move 3.5s infinite 1.3s linear;
+  }
+  .g-first {
+    animation: scaleMove 3.5s infinite linear;
+  }
+  @keyframes move {
+      25% {
+          opacity: 1;
+          transform: translate(-1vw, 0);
+      }
+      50% {
+          opacity: 1;
+          transform: translate(1vw, 0);
+      }
+      75%,
+      100% {
+          opacity: 0;
+          transform: translate(700%, 0);
+      }
+  }
+  @keyframes scaleMove {
+      25% {
+          opacity: 1;
+          transform: translate(-1vw, 0);
+      }
+      35% {
+          opacity: 1;
+          transform: scale(1);
+      }
+      70% {
+          opacity: 1;
+          transform: translate(1vw, 0) scale(2);
+      }
+      90%,
+      100% {
+          opacity: 0;
+          transform: translate(1vw, 0) scale(1);
+      }
+  }
+  /* -================================================================== */
+  div>p{
+    color: #09f;
+  }
+  div>p::after  {
+      content: "加载中";
+      animation: dot 3s infinite steps(3, start);
+  }
+  @keyframes dot {
+      33.33% {
+          content: "加载中.";
+      }
+      66.67% {
+          content: "加载中..";
+      }
+      100% {
+          content: "加载中...";
+      }
+  }
+  /* -================================================================== */
+  .cell-area{
+    padding: 50px 0;
+    background-color: #e4e4e4;;
+  }
+  .container {
+      position: relative;
+      width: 140px;
+      margin: auto;
+  }
+  .header {
+      position: absolute;
+      width: 26px;
+      height: 10px;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -10px);
+      border-radius: 5px 5px 0 0;
+      background: rgba(255, 255, 255, .88);
+  }
+  .battery-copy {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 220px;
+      width: 140px;
+      border-radius: 15px 15px 5px 5px;
+      overflow: hidden;
+  }
+  .battery {
+      position: relative;
+      height: 220px;
+      box-sizing: border-box;
+      border-radius: 15px 15px 5px 5px;
+      box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.22);
+      background: #fff;
+      z-index: 1;
+  }
+  .battery::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 80%;
+      background: linear-gradient(to bottom, #7abcff 0%, #00BCD4 44%, #2196F3 100%);
+      border-radius: 0px 0px 5px 5px;
+      box-shadow: 0 14px 28px rgba(33, 150, 243, 0), 0 10px 10px rgba(9, 188, 215, 0.08);
+      animation: charging 10s linear infinite;
+      filter: hue-rotate(90deg);
+  }
+  .g-wave {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, .8);
+      border-radius: 45% 47% 44% 42%;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 1;
+      animation: move1 10s linear infinite;
+  }
+  .g-wave:nth-child(2) {
+      border-radius: 38% 46% 43% 47%;
+      transform: translate(-50%, 0) rotate(-135deg);
+  }
+
+  .g-wave:nth-child(3) {
+      border-radius: 42% 46% 37% 40%;
+      transform: translate(-50%, 0) rotate(135deg);
+  }
+  @keyframes charging {
+    50% {
+        box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83), 0px 4px 10px rgba(9, 188, 215, 0.4);
+    }
+    95% {
+        top: 5%;
+        filter: hue-rotate(0deg);
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 14px 28px rgba(4, 188, 213, .2), 0 10px 10px rgba(9, 188, 215, 0.08);
+    }
+    100% {
+        top: 0%;
+        filter: hue-rotate(0deg);
+        border-radius: 15px 15px 5px 5px;
+        box-shadow: 0 14px 28px rgba(4, 188, 213, 0), 0 10px 10px rgba(9, 188, 215, 0.4);
+    }
+  }
+  @keyframes move1 {
+      100% {
+          transform: translate(-50%, -160px) rotate(720deg);
+      }
+  }
+</style>
+<body>
+  <h1>circle and horse race lamp</h1>
+  <div style="display:flex;justify-content: space-around;">
+    <div id="circle-water"></div>
+    <div class="horse-race-lamp">
+      <div class="mask-area"></div>
+      <div class="light-area"></div>
+    </div>
+  </div>
+  <hr style="border: 1px dotted #FF0000; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+  <div class="light-wrapper">
+    <div class="conic"></div>
+    <div class="conic conic-demo"></div>
+    <div class="rainbow"></div>
+  </div>
+  <div class="cursor-pointer-area">
+    <div class="pic pic1"></div>
+  </div>
+  <div>
+    <p></p>
+  </div>
+  <hr style="border: 1px dotted #FF0000; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+  <div class="g-container">
+    <div class="g-first"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+    <div class="g-ball"></div>
+  </div>
+  <div class="cell-area">
+    <div class="container">
+      <div class="header"></div>
+      <div class="battery">
+      </div>
+      <div class="battery-copy">
+          <div class="g-wave"></div>
+          <div class="g-wave"></div>
+          <div class="g-wave"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
